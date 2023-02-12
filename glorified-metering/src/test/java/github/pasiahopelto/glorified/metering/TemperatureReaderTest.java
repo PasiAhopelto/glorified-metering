@@ -10,6 +10,6 @@ public class TemperatureReaderTest {
 
 	@Test
 	public void returnsThirtyEightDegrees() {
-		 assertEquals(temperatureReader.getCpuTemperatureCelcius(), Double.valueOf(38.0d));
+		 assertEquals(temperatureReader.getGpuTemperatureCelcius(), Double.valueOf(38.0d));
 	}
 }

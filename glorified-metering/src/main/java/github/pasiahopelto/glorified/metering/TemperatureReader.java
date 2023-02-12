@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 @Component("temperatureReader")
 public class TemperatureReader {
 
-	public Double getCpuTemperatureCelcius() {
+	public Double getGpuTemperatureCelcius() {
 		return 38.0;
-	}	
+	}
 }
