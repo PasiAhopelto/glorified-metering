@@ -10,13 +10,13 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 @ExtendWith(MockitoExtension.class)
-public class MeasurementControllerTest {
+public class MeasurementRestControllerTest {
 
 	@Mock
-	private TemperatureReader temperatureReader;
+	private TemperatureDbReader temperatureReader;
 
 	@InjectMocks
-	private MeasurementsController controller;
+	private MeasurementsRestController controller;
 
 	@Test
 	public void returnsTenDegreesForGpu() {

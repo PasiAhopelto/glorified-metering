@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/measurements")
-public class MeasurementsController {
+public class MeasurementsRestController {
 
 	@Autowired
-	private TemperatureReader temperatureReader;
+	private TemperatureDbReader temperatureReader;
 
 	@GetMapping("/temperature/gpu")
 	public Double getGpuTemperature() {

@@ -4,9 +4,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
-public class TemperatureReaderTest {
+public class TemperatureDbReaderTest {
 
-	private TemperatureReader temperatureReader = new TemperatureReader();
+	private TemperatureDbReader temperatureReader = new TemperatureDbReader();
 
 	@Test
 	public void returnsThirtyEightDegreesForGpu() {
