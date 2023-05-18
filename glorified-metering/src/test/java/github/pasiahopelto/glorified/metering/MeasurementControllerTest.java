@@ -19,8 +19,14 @@ public class MeasurementControllerTest {
 	private MeasurementsController controller;
 
 	@Test
-	public void returnsTenDegrees() {
+	public void returnsTenDegreesForGpu() {
 		when(temperatureReader.getGpuTemperatureCelcius()).thenReturn(Double.valueOf(10.0d));
 		assertEquals(Double.valueOf(10.0d), controller.getGpuTemperature());
+	}
+
+	@Test
+	public void returnsTwentyDegreesForCpu() {
+		when(temperatureReader.getCpuTemperatureCelcius()).thenReturn(Double.valueOf(20.0d));
+		assertEquals(Double.valueOf(20.0d), controller.getCpuTemperature());
 	}
 }

@@ -16,4 +16,9 @@ public class MeasurementsController {
 	public Double getGpuTemperature() {
 		return temperatureReader.getGpuTemperatureCelcius();
 	}
+
+	@GetMapping("/temperature/cpu")
+	public Double getCpuTemperature() {
+		return temperatureReader.getCpuTemperatureCelcius();
+	}
 }
