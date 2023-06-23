@@ -17,13 +17,24 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-web:3.0.1'
-    implementation 'org.springframework.boot:spring-boot-starter-logging:3.0.1'
-    implementation 'org.springframework:spring-context:6.0.4'
-    testImplementation 'org.mockito:mockito-junit-jupiter:5.1.1'
-    testRuntimeOnly 'org.mockito:mockito-junit-jupiter:5.1.1'
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.2'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.2'
+    implementation 'org.springframework.boot:spring-boot-starter-web:3.2.1'
+    implementation 'org.springframework.boot:spring-boot-starter-logging:3.2.1'
+    implementation 'org.springframework:spring-context:6.1.2'
+    implementation 'org.springframework:spring-jdbc:6.1.2'
+    implementation 'org.mariadb.jdbc:mariadb-java-client:3.2.0'
+    implementation 'org.flywaydb:flyway-core:9.22.3'
+    testImplementation 'org.springframework:spring-jdbc:6.1.2'
+    testRuntimeOnly 'org.springframework:spring-jdbc:6.1.2'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test:3.2.1'
+    testRuntimeOnly 'org.springframework.boot:spring-boot-starter-test:3.2.1'
+    testImplementation 'org.mockito:mockito-junit-jupiter:5.7.0'
+    testRuntimeOnly 'org.mockito:mockito-junit-jupiter:5.7.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.10.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.10.0'
+    testImplementation 'com.h2database:h2:2.2.224'
+    testRuntimeOnly 'com.h2database:h2:2.2.224'
+    testImplementation 'org.flywaydb:flyway-core:9.22.3'
+    testRuntimeOnly 'org.flywaydb:flyway-core:9.22.3'
 }
 
 test {

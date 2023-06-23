@@ -14,6 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import github.pasiahopelto.glorified.metering.DbWriter.Type;
+
 @Component
 public class GpuTemperatureCollector {
 
@@ -22,13 +24,16 @@ public class GpuTemperatureCollector {
 	private Logger logger = LoggerFactory.getLogger(GpuTemperatureCollector.class);
 
 	@Autowired
+	private DbWriter dbWriter;
+	
+	@Autowired
 	private Runtime runtime;
 	
 	@Scheduled(fixedRate = 5000)
 	public void storeCurrentGpuTemperature() {
 		try {
 			Float result = parseTemperature(runTemperatureCommand());
-			logger.info("GPU temperature: " + result);
+			dbWriter.writeTemperature(Type.GPU, result);
 		} catch (IOException e) {
 			logger.error("GPU temperature reader failed with " + e.getMessage());
 		} catch (InterruptedException e) {
