@@ -10,6 +10,7 @@ import org.h2.jdbcx.JdbcConnectionPool;
 import org.h2.tools.Server;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -47,7 +48,12 @@ public class DbWriterTest {
  		Flyway flyway = Flyway.configure().dataSource(dataSource).load();
 		flyway.migrate();
 	}
-	
+
+	@BeforeEach
+	public void beforeEach() {
+		jdbcTemplate.update("DELETE FROM metering.temperature");
+	}
+
 	@Test
 	public void writesCpuTemperatureToDabase() {
 		dbWriter.writeTemperature(Type.CPU, 3.2f);
