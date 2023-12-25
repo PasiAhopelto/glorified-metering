@@ -1,7 +1,6 @@
 package github.pasiahopelto.glorified.metering;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.sql.SQLException;
@@ -22,12 +21,10 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import com.fasterxml.jackson.databind.introspect.TypeResolutionContext.Empty;
-
 import github.pasiahopelto.glorified.metering.DbWriter.Type;
 
 @ExtendWith(MockitoExtension.class)
-public class TemperatureDbReaderTest {
+public class DbOperationsTest {
 
 	private static DataSource dataSource = null;
     private static Server server;
