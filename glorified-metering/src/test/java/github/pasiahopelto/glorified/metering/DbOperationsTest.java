@@ -59,13 +59,13 @@ public class DbOperationsTest {
 	}
 
 	@Test
-	public void failsIfCpuTableIsEmpty() {
-		assertThrows(EmptyResultDataAccessException.class, () -> temperatureReader.getCpuTemperatureCelcius());
+	public void nanIfCpuTableIsEmpty() {
+		assertEquals(Double.NaN, temperatureReader.getCpuTemperatureCelcius());
 	}
 
 	@Test
-	public void failsIfGpuTableIsEmpty() {
-		assertThrows(EmptyResultDataAccessException.class, () -> temperatureReader.getCpuTemperatureCelcius());
+	public void nanIfGpuTableIsEmpty() {
+		assertEquals(Double.NaN, temperatureReader.getGpuTemperatureCelcius());
 	}
 
 	@Test
