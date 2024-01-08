@@ -6,6 +6,7 @@
 # TODO Next
 
 - simulate temperature collection in other envs than Raspbian
+- use json in rest api
 - mariadb runtime configuration
 - simple ui with htmx
 - database aggregation

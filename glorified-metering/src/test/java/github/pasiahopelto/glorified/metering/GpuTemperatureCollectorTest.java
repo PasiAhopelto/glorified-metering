@@ -16,18 +16,18 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import github.pasiahopelto.glorified.metering.DbWriter.Type;
+import github.pasiahopelto.glorified.metering.SpringConfig.GpuTemperatureCommandRunner;
 
 @ExtendWith(MockitoExtension.class)
 public class GpuTemperatureCollectorTest {
 
-	private static final String[] GPU_TEMPERATURE_CMD = new String[] { "vcgencmd", "measure_temp" };
     private static final String TEMPERATURE = "temp=59.4'C";
 
     @Mock
     private DbWriter dbWriter;
     
 	@Mock
-	private Runtime runtime;
+	private GpuTemperatureCommandRunner runner;
 	
 	@InjectMocks
 	private GpuTemperatureCollector collector;
@@ -35,15 +35,15 @@ public class GpuTemperatureCollectorTest {
     private Process process = mock(Process.class);
 
 	@Test
-	public void failsGracefullyIfCollectorProcessFails() throws IOException {
-		when(runtime.exec(new String[] { "vcgencmd", "measure_temp" })).thenThrow(new IOException());
+	public void failsGracefullyIfCollectorProcessFails() throws IOException, InterruptedException {
+		when(runner.run()).thenThrow(new IOException());
 		collector.storeCurrentGpuTemperature();
 		verifyNoInteractions(dbWriter);
 	}
 	
 	@Test
     public void storesCurrentGpuTemperature() throws IOException, InterruptedException {
-        when(runtime.exec(GPU_TEMPERATURE_CMD)).thenReturn(process);
+        when(runner.run()).thenReturn(TEMPERATURE);
 		when(process.getInputStream()).thenReturn(new ByteArrayInputStream(TEMPERATURE.getBytes()));
         collector.storeCurrentGpuTemperature();
 		verify(dbWriter, times(1)).writeTemperature(Type.GPU, 59.4f);
