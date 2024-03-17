@@ -45,7 +45,7 @@ public class IntegrationTest {
         cpuTemperatureCollector.storeCurrentCpuTemperature();
         Mono<ResponseEntity<String>> response = getResponse("cpu");
         checkResult(response);
-        assertEquals("12.3", actualTemperature);
+        assertEquals("{\"temperature\":12.3,\"type\":\"CPU\"}", actualTemperature);
         assertEquals(HttpStatusCode.valueOf(200), actualStatusCode);
     }
 
@@ -54,7 +54,7 @@ public class IntegrationTest {
         gpuTemperatureCollector.storeCurrentGpuTemperature();
         Mono<ResponseEntity<String>> response = getResponse("gpu");
         checkResult(response);
-        assertEquals("45.1", actualTemperature);
+        assertEquals("{\"temperature\":45.1,\"type\":\"GPU\"}", actualTemperature);
         assertEquals(HttpStatusCode.valueOf(200), actualStatusCode);
     }
 

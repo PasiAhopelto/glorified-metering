@@ -21,12 +21,19 @@ public class MeasurementRestControllerTest {
 	@Test
 	public void returnsTenDegreesForGpu() {
 		when(temperatureReader.getGpuTemperatureCelcius()).thenReturn(Double.valueOf(10.0d));
-		assertEquals(Double.valueOf(10.0d), controller.getGpuTemperature());
+		assertEquals(createExpectedTemperature(Temperature.Type.GPU, 10.0), controller.getGpuTemperature());
 	}
 
 	@Test
 	public void returnsTwentyDegreesForCpu() {
 		when(temperatureReader.getCpuTemperatureCelcius()).thenReturn(Double.valueOf(20.0d));
-		assertEquals(Double.valueOf(20.0d), controller.getCpuTemperature());
+		assertEquals(createExpectedTemperature(Temperature.Type.CPU, 20.0), controller.getCpuTemperature());
 	}
-}
+
+	private Temperature createExpectedTemperature(Temperature.Type type, Double temperature) {
+		Temperature result = new Temperature();
+		result.setType(type);
+		result.setTemperature(temperature);
+		return result;
+	}
+ }
