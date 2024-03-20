@@ -16,7 +16,6 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
-// FIXME move test implementations to own file, maybe also prod implementations
 @Configuration
 public class SpringConfig {
 
